@@ -6,6 +6,20 @@
 
 <body>
     <h1>Todos</h1>
+    <input id="search-todo" type="text" placeholder="Filter todos">
+    <label>
+        <input id="hide-completed" type="checkbox"> Hide Completed
+    </label>
+
+    <div id="todos">
+
+    </div>
+    <form id="new-todo">
+        <input type="text" placeholder="Something to do" name="text">
+        <button>Add todo</button>
+    </form>
+    <script src="uuidv4.js"></script>
+    <script src="todo-functions.js"></script>
     <script src="todo-app.js"></script>
 
 </body>
