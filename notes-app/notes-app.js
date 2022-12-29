@@ -1,23 +1,26 @@
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+let notes = getSavedNotes()
 
-// const p = document.querySelector('p')
-// p.remove()
+const filters = {
+    searchText : ''
+}
 
-const ps = document.querySelectorAll('p')
-ps.forEach (function (p) {
-    p.textContent = '******'
-    // console.log(p.textContent)
+renderNotes(notes, filters)
+
+document.querySelector('#create-note').addEventListener('click', function (e) {
+    notes.push({
+        id : uuidv4(),
+        title: '',
+        body: ''
+    })
+    saveNotes(notes)
+    renderNotes(notes, filters)
+}) 
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+    filters.searchText = e.target.value
+    renderNotes(notes, filters)
 })
 
-const newParagraph = document.createElement('p')
-newParagraph.textContent = 'This is a new element from JavaScipt'
-document.querySelector('body').appendChild(newParagraph)
+document.querySelector('#filter-by').addEventListener('change', function(e) {
+    console.log(e.target.value)
+})
